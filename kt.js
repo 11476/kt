@@ -29,3 +29,7 @@ function keyjinglize(toKeyjinglize, pairsS, pairsT) {
   return result;
 }
 
+document.getElementById("actionBtn").addEventListener("click", () => {
+  let input = document.getElementById("to_k").value;
+    document.getElementById("message").textContent = keyjinglize(input, ds, dt);
+    });
