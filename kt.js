@@ -1,7 +1,9 @@
+// work of exclamation mark a
 function rand() {
   return Math.floor(Math.random() * 2147483647);
 }
-
+var ds = ["🔑", "(", "[", "{", "○", "♤", "🔡"];
+var dt = ["🔐", ")", "]", "}", "●", "♠︎", "🆎️"];
 function keyjinglize(toKeyjinglize, pairsS, pairsT) {
   let result = "";
 
@@ -18,11 +20,12 @@ function keyjinglize(toKeyjinglize, pairsS, pairsT) {
     }
 
     if (rand() % 221 > 90) {
-      const opening = pairsS[rand() % 17];
-      const closing = pairsT[rand() % 17];
+      const opening = pairsS[rand() % 7];
+      const closing = pairsT[rand() % 7];
       result += opening + closing;
     }
   }
 
   return result;
 }
+

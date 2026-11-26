@@ -3,7 +3,7 @@
   "name": "KT",
   "version": "1.0",
 
-  "description": "Decorates text",
+  "description": "Decorates text. -ExclamationMarkA",
 
   "icons": null,
 
@@ -15,7 +15,9 @@
       }
     }
   },
-
+  "action":{
+    "default_popup": "kt.html"
+  },
   "content_scripts": [
     {
       "matches": ["*://*.mozilla.org/*"],
