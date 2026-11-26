@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "KT",
+  "version": "1.0",
+
+  "description": "Decorates text",
+
+  "icons": null,
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "borderify@mozilla.org",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["kt.js"]
+    }
+  ]
+}
