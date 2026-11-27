@@ -8,7 +8,7 @@ function splitG(str) {
 }
 
 const ds = [
-  "› ",
+  "‹ ",
   "«",
   "≤ ",
   "(",
@@ -28,7 +28,7 @@ const ds = [
 ];
 
 const dt = [
-  "‹",
+  "›",
   "»",
   "≥⚀ ",
   ")",
@@ -51,7 +51,6 @@ function keyjinglize(to_k, pairsS, pairsT) {
   const result = [];
 
   for (const a of splitG(to_k)) {
-
     if (a === " ") {
       result.push("!");
     } else if (a === "\n") {
