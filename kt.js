@@ -1,19 +1,66 @@
-// work of exclamation mark a
+//work of exclamation mark a
 function rand() {
   return Math.floor(Math.random() * 2147483647);
 }
-var ds = ["×÷", "(", "[", "{", "《", "♤", "'", "☆", "🅾"];
-var dt = ["÷×", ")", "]", "}", "》", "♠︎", "'", "★", "🆎"];
-function keyjinglize(toKeyjinglize, pairsS, pairsT) {
+const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
+function splitG(str) {
+  return [...segmenter.segment(str)].map((s) => s.segment);
+}
+
+function sliceG(str, start, end) {
+  return splitG(str).slice(start, end).join("");
+}
+
+const ds = [
+  "› ",
+  "«",
+  "≤ ",
+  "(",
+  "[",
+  "{🔑 ",
+  "🔐 ",
+  "💔 ",
+  "⪿",
+  "⨧",
+  "⭐︎",
+  "<<",
+  "⁌",
+  "◦",
+  "∊",
+  "〖",
+  "✪",
+];
+
+const dt = [
+  "‹",
+  "»",
+  "≥⚀ ",
+  ")",
+  "]",
+  "}",
+  "🔏 ",
+  "❖",
+  "⫀",
+  "❖",
+  "⭐︎",
+  ">>",
+  "⁍",
+  "●",
+  "∍",
+  "〗",
+  "✪",
+];
+
+function keyjinglize(to_k, pairsS, pairsT) {
   let result = "";
 
-  for (let i = 0; i < toKeyjinglize.length; i++) {
-    const a = toKeyjinglize[i];
+  for (let i = 0; i < to_k.length; i++) {
+    const a = to_k[i];
 
     if (a === " ") {
       result += "!";
     } else if (a === "\n") {
-      result += "Â¡";
+      result += "¡";
       result += "\n";
     } else {
       result += a;
@@ -26,15 +73,9 @@ function keyjinglize(toKeyjinglize, pairsS, pairsT) {
       const closing = pairsT[r];
       result += closing;
       let r2 = rand() % result.length;
-      result = `${result.slice(0, r2)}${opening}${result.slice(r2)}`;
+      result = `${sliceG(result, 0, r2)}${opening}${sliceG(result, r2, undefined)}`;
     }
   }
 
   return result;
 }
-
-document.getElementById("actionBtn").addEventListener("click", () => {
-  let input = document.getElementById("to_k").value;
-  document.getElementById("message").innerHTML =
-    keyjinglize(input, ds, dt) + "<br> made with KT4.";
-});
