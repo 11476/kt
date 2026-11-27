@@ -1,3 +1,4 @@
+// ! a ! a ! a ! a ! a
 function rand() {
   return Math.floor(Math.random() * 2147483647);
 }
