@@ -24,7 +24,14 @@
 
     <textarea id="to_k">Put initial content in here</textarea>
     <p id="message">decorated content appears after input is updated ķ</p>
-
     <script src="kt.js"></script>
+    <button
+      onclick="
+        document.getElementById(`message`).innerHTML =
+          `§${keyjinglize(document.getElementById(`to_k`).value, ds, dt)}`
+      "
+    >
+      KT4
+    </button>
   </body>
 </html>
