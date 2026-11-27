@@ -1,14 +1,9 @@
-//work of exclamation mark a
 function rand() {
   return Math.floor(Math.random() * 2147483647);
 }
 const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
 function splitG(str) {
   return [...segmenter.segment(str)].map((s) => s.segment);
-}
-
-function sliceG(str, start, end) {
-  return splitG(str).slice(start, end).join("");
 }
 
 const ds = [
@@ -52,36 +47,32 @@ const dt = [
 ];
 
 function keyjinglize(to_k, pairsS, pairsT) {
-  let result = "";
+  const result = [];
 
-  for (let i = 0; i < to_k.length; i++) {
-    const a = to_k[i];
+  for (const a of splitG(to_k)) {
 
     if (a === " ") {
-      result += "!";
+      result.push("!");
     } else if (a === "\n") {
-      result += "¡";
-      result += "\n";
+      result.push("¡", "\n");
     } else {
-      result += a;
+      result.push(a);
     }
 
     if (rand() % 221 > 90) {
-      let r = rand() % ds.length;
+      const r = rand() % pairsS.length;
 
-      const opening = pairsS[r];
-      const closing = pairsT[r];
-      result += closing;
-      let r2 = rand() % result.length;
-      result = `${sliceG(result, 0, r2)}${opening}${sliceG(result, r2, undefined)}`;
+      result.push(pairsT[r]);
+      const r2 = rand() % (result.length + 1);
+      result.splice(r2, 0, pairsS[r]);
     }
   }
 
-  return result;
+  return result.join("");
 }
 
 document.getElementById("actionBtn").addEventListener("click", () => {
-  let input = document.getElementById("to_k").value;
-  document.getElementById("message").innerHTML =
-    keyjinglize(input, ds, dt) + "<br> made with KT4.";
+  const input = document.getElementById("to_k").value;
+  document.getElementById("message").textContent =
+    `${keyjinglize(input, ds, dt)}\nmade with KT4.`;
 });
