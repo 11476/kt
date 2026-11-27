@@ -79,3 +79,9 @@ function keyjinglize(to_k, pairsS, pairsT) {
 
   return result;
 }
+
+document.getElementById("actionBtn").addEventListener("click", () => {
+  let input = document.getElementById("to_k").value;
+  document.getElementById("message").innerHTML =
+    keyjinglize(input, ds, dt) + "<br> made with KT4.";
+});

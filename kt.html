@@ -14,24 +14,16 @@
         padding: 8px 16px;
         cursor: pointer;
       }
-      * {
-        background-color: oklch(88.192% 0.15333 90.239 / 0.402);
-      }
     </style>
   </head>
   <body>
     <h3>KT4 (keyjingle today tomorrow tuesday thursday)</h3>
-
-    <textarea id="to_k">Put initial content in here</textarea>
-    <p id="message">decorated content appears after input is updated ķ</p>
-    <script src="kt.js"></script>
-    <button
-      onclick="
-        document.getElementById(`message`).textContent =
-          `§${keyjinglize(document.getElementById(`to_k`).value, ds, dt)}`
-      "
-    >
-      KT4
+    <button>
+      <b id="actionBtn">KT4</b>
     </button>
+    <textarea id="to_k">undecorated text goes here</textarea>
+    <p id="message">decorated content appears after kt is pressed</p>
+
+    <script src="kt.js"></script>
   </body>
 </html>
